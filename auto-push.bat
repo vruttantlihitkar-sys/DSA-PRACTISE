@@ -1,19 +1,15 @@
-cd /v/git-dsa  # Go to your repo folder
+@echo off
+cd /d V:\git-dsa
 
-# Remove Git index (cached metadata)
-rm -f .git/index
-
-# Reset Git to rebuild index safely
-git reset
-
-# Stage all files
+:: Stage all changes
 git add -A
 
-# Get current date and time in Windows Git Bash format
-datetime=$(date +"%Y-%m-%d_%H-%M-%S")
+:: Commit with custom message including date and time
+set dt=%date%_%time:~0,2%-%time:~3,2%-%time:~6,2%
+git commit -m "Files uploaded from Vruttant's PC on %dt%"
 
-# Commit with dynamic date-time
-git commit -m "Files uploaded from Vruttant's PC on $datetime"
+:: Pull remote changes (rebase) to avoid conflicts
+git pull origin main --rebase
 
-# Force push
-git push -f origin main
+:: Push to GitHub
+git push origin main
