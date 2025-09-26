@@ -1,14 +1,16 @@
-@echo off
-cd /d V:\git-dsa
+cd /v/git-dsa  # Go to your repo folder
 
-:: Add all changes
-git add .
+# 1. Remove Git index (cached metadata)
+rm -f .git/index
 
-:: Commit with custom message (Vruttant's PC + date & time)
-git commit -m "Committed from Vruttant's PC on %date% %time%"
+# 2. Reset Git to rebuild index safely
+git reset
 
-:: Pull remote changes before push
-git pull origin main --rebase
+# 3. Stage all files (new, modified, deleted)
+git add -A
 
-:: Push to GitHub
-git push origin main
+# 4. Commit all changes
+git commit -m "Clean metadata and push all current files"
+
+# 5. Force push to GitHub
+git push -f origin main
