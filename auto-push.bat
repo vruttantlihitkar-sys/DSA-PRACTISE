@@ -11,4 +11,4 @@ git commit -m "Committed from Vruttant's PC on %date% %time%"
 git pull origin main --rebase
 
 :: Push to GitHub
-git push origin main
+git push origin main
