@@ -9,8 +9,8 @@ git reset
 # 3. Stage all files (new, modified, deleted)
 git add -A
 
-# 4. Commit all changes
-git commit -m "Clean metadata and push all current files"
+# 4. Commit all changes with dynamic date and time
+git commit -m "Files uploaded from Vruttant's PC on $(date '+%Y-%m-%d_%H:%M:%S')"
 
 # 5. Force push to GitHub
 git push -f origin main
